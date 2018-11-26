@@ -7,39 +7,36 @@ using System.Text;
 
 namespace WcfWpf.Contracts
 {
-	// NOTE: You can use the "Rename" command on the "Refactor" menu to change the interface name "IService1" in both code and config file together.
 	[ServiceContract]
-	public interface IService1
+	public interface IWcfWpfService
 	{
 		[OperationContract]
-		string GetData(int value);
+		string[] GetTitles(int countOfMostRecentArticles);
 
 		[OperationContract]
-		CompositeType GetDataUsingDataContract(CompositeType composite);
-
-		// TODO: Add your service operations here
+		Article GetArticle(int number);
 	}
 
 	// Use a data contract as illustrated in the sample below to add composite types to service operations.
 	// You can add XSD files into the project. After building the project, you can directly use the data types defined there, with the namespace "WcfWpf.Contracts.ContractType".
 	[DataContract]
-	public class CompositeType
+	public class Article
 	{
-		bool boolValue = true;
-		string stringValue = "Hello ";
+		string title = "Hello ";
+		string teaser = "Hello word message";
 
 		[DataMember]
-		public bool BoolValue
+		public string Title
 		{
-			get { return boolValue; }
-			set { boolValue = value; }
+			get { return title; }
+			set { title = value; }
 		}
 
 		[DataMember]
-		public string StringValue
+		public string Teaser
 		{
-			get { return stringValue; }
-			set { stringValue = value; }
+			get { return teaser; }
+			set { teaser = value; }
 		}
 	}
 }
