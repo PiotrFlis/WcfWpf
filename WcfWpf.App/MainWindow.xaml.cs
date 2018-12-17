@@ -20,6 +20,7 @@ namespace WcfWpf.App
 	/// </summary>
 	public partial class MainWindow : Window
 	{
+		//MainVM mv = new MainVM();
 		public MainWindow()
 		{
 			InitializeComponent();
@@ -27,17 +28,19 @@ namespace WcfWpf.App
 
 		private async void Button_Click(object sender, RoutedEventArgs e)
 		{
-			//await Task.Run(() => 
+			//await IncrementCounter();
+		}
+
+		private async Task IncrementCounter()
+		{
+			for (int i = 0; i < 50; i++)
 			{
-				for (int i=0; i<50; i++)
+				await Task.Run(() =>
 				{
-					await Task.Run(() =>
-					{
-						System.Threading.Thread.Sleep(1000);
-					});
-					LabelOutput.Content = i.ToString();
-				}
-			};//);
+					System.Threading.Thread.Sleep(1000);
+				});
+				LabelOutput.Content = i.ToString();
+			}
 			LabelOutput.Content = "End";
 		}
 	}
